@@ -3,13 +3,6 @@ import reset from "styled-reset";
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
-
-  @font-face {
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 100;
-    src: url("assets/fonts/font.woff") format("woff");
-  }
   body {
     height : 100vh;
     background-color: #f5f5f5;
