@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { GlobalStyle } from './styles/globalStyle';
+import useApp from './hooks/useApp';
+import useLocalStorage from './hooks/useLocalStorage';
+import MainPage from './pages/MainPage';
 function App() {
+
+  const {getItem, lastPage} = useLocalStorage()
+  const { goForward, goBack, movePageInBreadCrumb, moveHomePage, currentPage, resetPage } = useApp()
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalStyle/>
+      <MainPage 
+      forward = { goForward }
+      back = { goBack }
+      movePageInBreadCrumb = { movePageInBreadCrumb }
+      moveHomePage={ moveHomePage }
+      lastPage = { lastPage('prac1') }
+      breadCrumbData = { getItem('prac1') }
+      currentPage = { currentPage }
+      resetPage = { resetPage }
+      />
     </div>
   );
 }
