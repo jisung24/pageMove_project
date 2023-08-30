@@ -12,14 +12,10 @@ export default function useApp() {
   // 앞으로가기
   const goForward = () => {
     const cntOfPages = getItem(LOCALSTORAGE_KEY);
-    if(cntOfPages.length < 20) {
-      setItem(LOCALSTORAGE_KEY);
-      // const lastPages = getItem(LOCALSTORAGE_KEY);
-      // const length = lastPages.length;
-      setCurrentPage(cntOfPages[cntOfPages.length - 1]);
-    }else{
-      alert('페이지가 너무 많습니다!');
-    }
+    setItem(LOCALSTORAGE_KEY);
+    const lastPages = getItem(LOCALSTORAGE_KEY);
+    const length = lastPages.length;
+    setCurrentPage(lastPages[length - 1]);
   }
 
   // 뒤로가기
